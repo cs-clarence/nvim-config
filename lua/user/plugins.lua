@@ -2,10 +2,13 @@ return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-	-- Onedark Color Scheme
-	use 'joshdick/onedark.vim'
+	-- Gruvbox Color Scheme
+	use 'morhetz/gruvbox'
 
-	-- Nvim-Tree
+	-- Feline Plugin, for the status bar thingy
+	use 'feline-nvim/feline.nvim'
+
+	-- Nvim-Tree, the file manager on the side
 	use {
   	'kyazdani42/nvim-tree.lua',
   	requires = {
