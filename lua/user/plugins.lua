@@ -10,7 +10,7 @@ end
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-	
+
 	-- Fzf, a fancy fuzzy finder
 	use 'junegunn/fzf.vim'
 	
@@ -28,12 +28,13 @@ return require('packer').startup(function(use)
 
 	-- ToggleTerm
 	use 'akinsho/toggleterm.nvim'
-	
+
 	-- Plugins For Code Completion
 	use 'hrsh7th/cmp-nvim-lsp'
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-cmdline'
+	use 'hrsh7th/cmp-nvim-lsp-signature-help'
 	use 'hrsh7th/nvim-cmp'
 
 	-- Snipping tools
@@ -45,6 +46,9 @@ return require('packer').startup(function(use)
 
 	-- For easy installation of LSPs
 	use 'williamboman/mason.nvim'
+
+	-- Bridging nvim-lspconfig and mason
+	use 'williamboman/mason-lspconfig.nvim'
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if packer_bootstrap then
