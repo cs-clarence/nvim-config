@@ -10,7 +10,10 @@ end
 return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-
+	
+	-- Fzf, a fancy fuzzy finder
+	use 'junegunn/fzf.vim'
+	
 	-- Gruvbox Color Scheme
 	use 'morhetz/gruvbox'
 
@@ -33,7 +36,6 @@ return require('packer').startup(function()
 	use 'williamboman/nvim-lsp-installer'
 
 	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
 	if packer_bootstrap then
 		require('packer').sync()
 	end
