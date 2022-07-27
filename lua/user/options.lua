@@ -8,8 +8,3 @@ vim.opt.cursorline = true
 vim.opt.mouse = "a"
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 vim.opt.autochdir = true
-
--- autocmds
-vim.cmd [[
-	autocmd TermOpen * setlocal nonumber norelativenumber
-]]

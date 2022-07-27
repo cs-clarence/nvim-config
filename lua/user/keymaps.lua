@@ -7,7 +7,6 @@ local expr_opts = { noremap = true, expr = true, silent = true }
 
 -- ToggleTerm keymaps
 keymap("t", [[<ESC>]], [[<C-\><C-n>]], default_opts)
-keymap("n", [[<leader>t]], [[:ToggleTerm<cr>]], default_opts)
 
 -- NvimToggleTree keymaps
 keymap("n", [[<leader>r]], [[:NvimTreeToggle<cr>]], default_opts)
