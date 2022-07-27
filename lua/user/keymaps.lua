@@ -1,6 +1,13 @@
-local keymap = vim.api.nvim_set_keymap
+local function keymap(...)
+	vim.keymap.set(...)
+end
+
 local default_opts = { noremap = true, silent = true }
 local expr_opts = { noremap = true, expr = true, silent = true }
 
--- Use "<ESC>" keybind to exit Terminal 
-keymap("t", [[<ESC>]], [[<c-\><c-n>]], default_opts)
+-- ToggleTerm keymaps
+keymap("t", [[<ESC>]], [[<C-\><C-n>]], default_opts)
+keymap("n", [[<leader>t]], [[:ToggleTerm<cr>]], default_opts)
+
+-- NvimToggleTree keymaps
+keymap("n", [[<leader>r]], [[:NvimTreeToggle<cr>]], default_opts)
