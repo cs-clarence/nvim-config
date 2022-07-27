@@ -7,7 +7,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 	
@@ -29,11 +29,22 @@ return require('packer').startup(function()
 	-- ToggleTerm
 	use 'akinsho/toggleterm.nvim'
 	
+	-- Plugins For Code Completion
+	use 'hrsh7th/cmp-nvim-lsp'
+	use 'hrsh7th/cmp-buffer'
+	use 'hrsh7th/cmp-path'
+	use 'hrsh7th/cmp-cmdline'
+	use 'hrsh7th/nvim-cmp'
+
+	-- Snipping tools
+	use 'L3MON4D3/LuaSnip'
+	use 'saadparwaiz1/cmp_luasnip'
+
 	-- Configs for Nvim LSP
 	use 'neovim/nvim-lspconfig'
 
-	-- LSP Installer
-	use 'williamboman/nvim-lsp-installer'
+	-- For easy installation of LSPs
+	use 'williamboman/mason.nvim'
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if packer_bootstrap then
