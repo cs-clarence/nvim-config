@@ -13,7 +13,7 @@ return require('packer').startup(function(use)
 
 	-- Fzf, a fancy fuzzy finder
 	use 'junegunn/fzf.vim'
-	
+
 	-- Gruvbox Color Scheme
 	use 'morhetz/gruvbox'
 
@@ -37,9 +37,10 @@ return require('packer').startup(function(use)
 	use 'hrsh7th/cmp-nvim-lsp-signature-help'
 	use 'hrsh7th/nvim-cmp'
 
-	-- Snipping tools
+	-- Snippets
 	use 'L3MON4D3/LuaSnip'
 	use 'saadparwaiz1/cmp_luasnip'
+	use 'rafamadriz/friendly-snippets'
 
 	-- Configs for Nvim LSP
 	use 'neovim/nvim-lspconfig'
