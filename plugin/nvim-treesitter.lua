@@ -1,6 +1,6 @@
-local require_ok, nvimTreeSitterConfig =
+local nvimTreeSitterConfigsOk, nvimTreeSitterConfig =
   pcall(require, "nvim-treesitter.configs")
-if not require_ok then
+if not nvimTreeSitterConfigsOk then
   vim.notify("Failed to require nvim-treesitter.configs")
   return
 end

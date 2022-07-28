@@ -1,3 +1,3 @@
 -- Which colorscheme to set
-local colorscheme = "gruvbox"
+local colorscheme = "tokyonight"
 return colorscheme

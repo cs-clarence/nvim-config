@@ -1,5 +1,5 @@
-local require_ok, nvimTree = pcall(require, "nvim-tree")
-if not require_ok then
+local nvimTreeOk, nvimTree = pcall(require, "nvim-tree")
+if not nvimTreeOk then
   vim.notify("Failed to require nvim-tree")
   return
 end

@@ -1,5 +1,5 @@
-local require_ok, lualine = pcall(require, "lualine")
-if not require_ok then
+local lualineOk, lualine = pcall(require, "lualine")
+if not lualineOk then
   vim.notify("Failed to require lualine")
   return
 end

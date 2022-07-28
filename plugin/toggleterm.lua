@@ -1,5 +1,5 @@
-local require_ok, toggleTerm = pcall(require, "toggleterm")
-if not require_ok then
+local toggelTermOk, toggleTerm = pcall(require, "toggleterm")
+if not toggelTermOk then
   vim.notify("Failed to require toggleterm")
   return
 end
