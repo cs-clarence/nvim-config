@@ -3,13 +3,14 @@ require('nvim-tree').setup {
 	reload_on_bufenter = true,
 	open_on_setup_file = true,
 	open_on_setup = true,
+	hijack_cursor = true,
 	sync_root_with_cwd = true,
   view = {
 		side = "left",
-    adaptive_size = true,
   },
   renderer = {
     group_empty = true,
+		highlight_opened_files = 'icon',
   },
   filters = {
     dotfiles = true,
