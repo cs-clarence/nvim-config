@@ -28,4 +28,8 @@ nvimTreeSitterConfig.setup({
     -- colors = {}, -- table of hex strings
     -- termcolors = {} -- table of colour name strings
   },
+  context_commentstring = {
+    enable_autocmd = false, -- Not sure what this is for
+    enable = true,
+  },
 })

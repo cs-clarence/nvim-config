@@ -33,6 +33,28 @@ local kind_icons = {
   TypeParameter = "",
 }
 
+local sourceNameCache = {}
+
+local function createMenuName(sourceName)
+  local menuName = sourceNameCache[sourceName]
+  if menuName ~= nil then
+    return menuName
+  end
+
+  local upperCased = string.upper(sourceName)
+
+  local strings = {}
+
+  for w in string.gmatch(upperCased, "%w+") do
+    table.insert(strings, w)
+  end
+
+  menuName = "[" .. table.concat(strings, " ") .. "]"
+  sourceNameCache[sourceName] = menuName
+
+  return menuName
+end
+
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
@@ -93,20 +115,13 @@ cmp.setup({
       -- Kind icons
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-      vim_item.menu = ({
-        luasnip = "[Snippet]",
-        buffer = "[Buffer]",
-        path = "[Path]",
-      })[entry.source.name]
+      vim_item.menu = createMenuName(entry.source.name)
       return vim_item
     end,
   },
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
-    -- { name = 'vsnip' }, -- For vsnip users.
     { name = "luasnip" }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
     { name = "nvim_lsp_signature_help" },
     { name = "spell" },
     { name = "dictionary" },

@@ -46,6 +46,7 @@ local plugins = {
 
   -- Fzf, a fancy fuzzy finder
   "ibhagwan/fzf-lua",
+
   -- Lualine Plugin, for the status line at the bottom
   "nvim-lualine/lualine.nvim",
 
@@ -69,6 +70,8 @@ local plugins = {
   "hrsh7th/cmp-calc",
   "hrsh7th/cmp-nvim-lua",
   "uga-rosa/cmp-dictionary",
+
+  -- Snippets
   "L3MON4D3/LuaSnip",
   "saadparwaiz1/cmp_luasnip",
   "rafamadriz/friendly-snippets",
@@ -83,6 +86,7 @@ local plugins = {
 
   -- Comment
   "numToStr/Comment.nvim",
+  "JoosepAlviste/nvim-ts-context-commentstring",
 
   -- Trouble
   "folke/trouble.nvim",
@@ -96,6 +100,9 @@ local plugins = {
 
   -- Autopairs
   "windwp/nvim-autopairs",
+
+  -- Gitsings
+  "lewis6991/gitsigns.nvim",
 }
 
 packer.startup(function(default_use)
