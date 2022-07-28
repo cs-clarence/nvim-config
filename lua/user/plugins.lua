@@ -12,7 +12,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
 	-- Fzf, a fancy fuzzy finder
-	use 'junegunn/fzf.vim'
+	use 'ibhagwan/fzf-lua'
 
 	-- Gruvbox Color Scheme
 	use 'morhetz/gruvbox'
@@ -56,6 +56,9 @@ return require('packer').startup(function(use)
 
 	-- Commenting plugin
 	use 'numToStr/Comment.nvim'
+
+	-- Treesitter Syntax Highlighting
+	use  { 'nvim-treesitter/nvim-treesitter', ['do'] = ':TSUpdate' }
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if packer_bootstrap then
