@@ -1,1 +1,3 @@
-vim.cmd [[colorscheme gruvbox]]
+-- Which colorscheme to set
+local colorscheme = "gruvbox"
+return colorscheme

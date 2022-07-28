@@ -1,67 +1,135 @@
 local fn = vim.fn
 
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-  vim.cmd [[packadd packer.nvim]]
+  packer_bootstrap = fn.system({
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  })
+  vim.cmd([[packadd packer.nvim]])
 end
 
-return require('packer').startup(function(use)
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost colorscheme_list.lua source <afile> | PackerSync
+    autocmd BufWritePost colorscheme.lua source <afile> | PackerSync
+  augroup end
+]])
+
+local requireOk, packer = pcall(require, "packer")
+if not requireOk then
+  vim.notify("Couldn't require packer")
+  return
+end
+
+-- Packer should display itself as a floating window
+packer.init({
+  display = {
+    open_fn = function()
+      return require("packer.util").float()
+    end,
+  },
+})
+
+local plugins = {
   -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+  "wbthomason/packer.nvim",
+  "nvim-lua/plenary.nvim",
 
-	-- Fzf, a fancy fuzzy finder
-	use 'ibhagwan/fzf-lua'
+  -- Fzf, a fancy fuzzy finder
+  "ibhagwan/fzf-lua",
+  -- Lualine Plugin, for the status line at the bottom
+  "nvim-lualine/lualine.nvim",
 
-	-- Gruvbox Color Scheme
-	use 'morhetz/gruvbox'
+  -- For file icons
+  "kyazdani42/nvim-web-devicons",
 
-	-- Lualine Plugin, for the status line at the bottom
-	use 'nvim-lualine/lualine.nvim'
+  -- Nvim-Tree, the file manager on the side
+  "kyazdani42/nvim-tree.lua",
 
-	-- For file icons
-	use 'kyazdani42/nvim-web-devicons'
+  -- ToggleTerm
+  "akinsho/toggleterm.nvim",
 
-	-- Nvim-Tree, the file manager on the side
-	use 'kyazdani42/nvim-tree.lua'
+  -- Code Completion
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-cmdline",
+  "hrsh7th/cmp-nvim-lsp-signature-help",
+  "hrsh7th/nvim-cmp",
+  "f3fora/cmp-spell",
+  "hrsh7th/cmp-calc",
+  "hrsh7th/cmp-nvim-lua",
+  "uga-rosa/cmp-dictionary",
+  "L3MON4D3/LuaSnip",
+  "saadparwaiz1/cmp_luasnip",
+  "rafamadriz/friendly-snippets",
 
-	-- ToggleTerm
-	use 'akinsho/toggleterm.nvim'
+  -- LSP
+  "neovim/nvim-lspconfig",
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
 
-	-- Plugins For Code Completion
-	use 'hrsh7th/cmp-nvim-lsp'
-	use 'hrsh7th/cmp-buffer'
-	use 'hrsh7th/cmp-path'
-	use 'hrsh7th/cmp-cmdline'
-	use 'hrsh7th/cmp-nvim-lsp-signature-help'
-	use 'hrsh7th/nvim-cmp'
+  -- Tagbar
+  "preservim/tagbar",
 
-	-- Snippets
-	use 'L3MON4D3/LuaSnip'
-	use 'saadparwaiz1/cmp_luasnip'
-	use 'rafamadriz/friendly-snippets'
+  -- Comment
+  "numToStr/Comment.nvim",
 
-	-- Configs for Nvim LSP
-	use 'neovim/nvim-lspconfig'
+  -- Trouble
+  "folke/trouble.nvim",
 
-	-- For easy installation of LSPs
-	use 'williamboman/mason.nvim'
+  -- Neoformat
+  "sbdchd/neoformat",
 
-	-- Bridging nvim-lspconfig and mason
-	use 'williamboman/mason-lspconfig.nvim'
+  -- TreeSitter
+  { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
+  "p00f/nvim-ts-rainbow",
 
-	-- Tagbar
-	use 'preservim/tagbar'
+  -- Autopairs
+  "windwp/nvim-autopairs",
+}
 
-	-- Commenting plugin
-	use 'numToStr/Comment.nvim'
+packer.startup(function(default_use)
+  local function use(...)
+    local use_ok = pcall(default_use, ...)
+    if not use_ok then
+      vim.notify("One or more plugin failed to install")
+    end
+  end
 
-	-- Treesitter Syntax Highlighting
-	use  { 'nvim-treesitter/nvim-treesitter', ['do'] = ':TSUpdate' }
+  -- Colorschemes
+  -- Install all the colorschemes specified by user
+  local csListOk, colorschemes = pcall(require, "user.colorscheme_list")
+  if csListOk then
+    for index, colorscheme in pairs(colorschemes) do
+      use(colorscheme)
+    end
+  end
 
-	-- Automatically set up your configuration after cloning packer.nvim
-	if packer_bootstrap then
-		require('packer').sync()
-	end
+  local csOk, colorscheme = pcall(require, "user.colorscheme")
+  if csOk then
+    local ok = pcall(vim.cmd, [[colorscheme ]] .. colorscheme)
+
+    if not ok then
+      vim.notify("Unable to set colorscheme " .. colorscheme .. ": not found")
+    end
+  end
+
+  for k, v in ipairs(plugins) do
+    use(v)
+  end
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  if packer_bootstrap then
+    require("packer").sync()
+  end
 end)
