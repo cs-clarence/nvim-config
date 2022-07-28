@@ -1,7 +1,7 @@
-local autopairsOK, autopairs = pcall(require, "autopairs")
-if not autopairsOK then
-  vim.notify("Failed to require lualine")
+local nvimAutopairsOK, autopairs = pcall(require, "nvim-autopairs")
+if not nvimAutopairsOK then
+  vim.notify("Failed to require nvim-autopairs")
   return
 end
 
-autopairs.setup({})
+autopairs.setup()
