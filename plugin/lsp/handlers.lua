@@ -143,6 +143,7 @@ local function lsp_keymaps(bufnr)
 end
 
 function M.on_attach(client, bufnr)
+  vim.notify("Running something")
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
 end

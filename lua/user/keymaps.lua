@@ -30,8 +30,8 @@ keymap("n", [[<C-h>]], [[<C-w>h]], default_opts)
 -- Better (?) window resize
 keymap("n", [[<A-k>]], [[:resize -1<cr>]], default_opts)
 keymap("n", [[<A-j>]], [[:resize +1<cr>]], default_opts)
-keymap("n", [[<A-l>]], [[:vertical resize -1<cr>]], default_opts)
-keymap("n", [[<A-h>]], [[:vertical resize +1<cr>]], default_opts)
+keymap("n", [[<A-h>]], [[:vertical resize -1<cr>]], default_opts)
+keymap("n", [[<A-l>]], [[:vertical resize +1<cr>]], default_opts)
 
 -- Buffer traversal
 keymap("n", [[<S-l>]], [[:bnext<cr>]], default_opts)
