@@ -7,4 +7,3 @@ vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.mouse = "a"
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
-vim.opt.autochdir = true
