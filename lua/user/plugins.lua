@@ -17,8 +17,8 @@ return require('packer').startup(function(use)
 	-- Gruvbox Color Scheme
 	use 'morhetz/gruvbox'
 
-	-- Feline Plugin, for the status bar thingy
-	use 'feline-nvim/feline.nvim'
+	-- Lualine Plugin, for the status line at the bottom
+	use 'nvim-lualine/lualine.nvim'
 
 	-- For file icons
 	use 'kyazdani42/nvim-web-devicons'
@@ -50,6 +50,12 @@ return require('packer').startup(function(use)
 
 	-- Bridging nvim-lspconfig and mason
 	use 'williamboman/mason-lspconfig.nvim'
+
+	-- Tagbar
+	use 'preservim/tagbar'
+
+	-- Commenting plugin
+	use 'numToStr/Comment.nvim'
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if packer_bootstrap then
