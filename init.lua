@@ -1,5 +1,5 @@
 -- Initialize the plugins first
-require("user.plugins")
+require("plugin_manager").init()
 
 -- Run other vim specific options
 require("user.options")
