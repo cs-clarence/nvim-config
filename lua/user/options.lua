@@ -35,3 +35,5 @@ o.termguicolors = true
 o.pumheight = 10 -- pop up menu height
 o.splitbelow = true -- when splitting a buffer vertically, open the new buffer below
 o.splitright = true -- when splitting a buffer horizontally, open the new buffer to the right
+o.list = true
+o.listchars:append("eol:↴")

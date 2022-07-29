@@ -101,8 +101,17 @@ local plugins = {
   -- Autopairs
   "windwp/nvim-autopairs",
 
-  -- Gitsings
+  -- Gitsigns
   "lewis6991/gitsigns.nvim",
+
+  -- Bufferline, for displaying buffers (AKA Tabs in other editors like vs code)
+  "akinsho/bufferline.nvim",
+
+  -- Impatient, for faster nvim loading, apparently
+  "lewis6991/impatient.nvim",
+
+  -- Indent Blacklines, to show indent lines
+  "lukas-reineke/indent-blankline.nvim",
 }
 
 packer.startup(function(default_use)

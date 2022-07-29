@@ -5,6 +5,11 @@ if not cmpOk then
   return
 end
 
+local check_backspace = function()
+  local col = vim.fn.col(".") - 1
+  return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+end
+
 local kind_icons = {
   Text = "",
   Method = "m",
@@ -55,16 +60,22 @@ local function createMenuName(sourceName)
   return menuName
 end
 
+local luasnipOk, luasnip = pcall(require, "luasnip")
+if not luasnipOk then
+  vim.notify("Failed to require luansip")
+  return
+end
+
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+      luasnip.lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
   window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
     ["<C-k>"] = cmp.mapping.select_prev_item(),
