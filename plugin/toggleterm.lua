@@ -1,10 +1,10 @@
-local toggelTermOk, toggleTerm = pcall(require, "toggleterm")
-if not toggelTermOk then
+local toggle_term_ok, toggle_term = pcall(require, "toggleterm")
+if not toggle_term_ok then
   vim.notify("Failed to require toggleterm")
   return
 end
 
-toggleTerm.setup({
+toggle_term.setup({
   -- open_mapping = [[<leader>tr]],
   insert_mappings = true,
   terminal_mappings = true,

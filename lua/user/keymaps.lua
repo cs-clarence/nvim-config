@@ -51,8 +51,7 @@ keymap("n", [[<leader>pu]], [[:PackerUpdate<cr>]], default_opts)
 keymap("n", [[<leader>dd]], [[:TroubleToggle<cr>]], default_opts)
 
 -- Diagnostics
-
-keymap("n", "<leader>d", vim.diagnostic.open_float, opts)
-keymap("n", "<leader>df", vim.diagnostic.open_float, opts)
-keymap("n", "[d", vim.diagnostic.goto_prev, opts)
-keymap("n", "]d", vim.diagnostic.goto_next, opts)
+keymap("n", "<leader>d", vim.diagnostic.open_float, default_opts)
+keymap("n", "<leader>df", vim.diagnostic.open_float, default_opts)
+keymap("n", "[d", vim.diagnostic.goto_prev, default_opts)
+keymap("n", "]d", vim.diagnostic.goto_next, default_opts)

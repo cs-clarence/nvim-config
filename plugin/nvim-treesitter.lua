@@ -1,11 +1,11 @@
-local nvimTreeSitterConfigsOk, nvimTreeSitterConfig =
+local nvim_treesitter_configs_ok, nvim_treesitter_configs =
   pcall(require, "nvim-treesitter.configs")
-if not nvimTreeSitterConfigsOk then
+if not nvim_treesitter_configs_ok then
   vim.notify("Failed to require nvim-treesitter.configs")
   return
 end
 
-nvimTreeSitterConfig.setup({
+nvim_treesitter_configs.setup({
   auto_install = true, -- auto install parsers when entering a buffer
   sync_install = false,
   ignore_install = {},

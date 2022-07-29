@@ -1,6 +1,6 @@
-local cmpOk, cmp = pcall(require, "cmp")
+local cmp_ok, cmp = pcall(require, "cmp")
 
-if not cmpOk then
+if not cmp_ok then
   vim.notify("Failed to require cmp")
   return
 end

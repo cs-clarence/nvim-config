@@ -10,8 +10,8 @@ __luacache_config = {
   },
 }
 
-local impatientOk, impatient = pcall(require, "impatient")
-if not impatientOk then
+local impatient_ok, impatient = pcall(require, "impatient")
+if not impatient_ok then
   vim.notify("Failed to require impatient")
   return
 end

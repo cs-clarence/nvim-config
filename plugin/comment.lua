@@ -1,6 +1,6 @@
-local commentOk, comment = pcall(require, "Comment")
+local comment_ok, comment = pcall(require, "Comment")
 
-if not commentOk then
+if not comment_ok then
   vim.notify("Failed to require cmp")
   return
 end

@@ -1,6 +1,6 @@
-local nvimTreeOk, nvimTree = pcall(require, "nvim-tree")
+local nvim_tree_ok, nvim_tree = pcall(require, "nvim-tree")
 
-if not nvimTreeOk then
+if not nvim_tree_ok then
   vim.notify("Failed to require nvim-tree")
   return
 end
@@ -13,7 +13,7 @@ end
 
 local tree_cb = nvimTreeConfig.nvim_tree_callback
 
-nvimTree.setup({
+nvim_tree.setup({
   disable_netrw = true,
   hijack_netrw = true,
   sort_by = "case_sensitive",
@@ -51,8 +51,8 @@ nvimTree.setup({
     timeout = 500,
   },
   renderer = {
-    group_empty = true,
-    highlight_opened_files = "icon",
+    group_empty = false,
+    highlight_opened_files = "all", -- "all" | "name" | "none" | "icon"
   },
   filters = {
     dotfiles = false,
