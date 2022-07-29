@@ -41,6 +41,7 @@ local plugins = {
   "neovim/nvim-lspconfig",
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
+  "jose-elias-alvarez/null-ls.nvim",
 
   -- Tagbar
   "preservim/tagbar",
@@ -51,9 +52,6 @@ local plugins = {
 
   -- Trouble
   "folke/trouble.nvim",
-
-  -- Neoformat
-  "sbdchd/neoformat",
 
   -- TreeSitter
   { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },

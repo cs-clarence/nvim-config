@@ -1,6 +1,6 @@
 local keymap = vim.keymap.set
 
-local function on_attach(client, bufnr)
+local function lsp_set_keymaps(bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -22,6 +22,19 @@ local function on_attach(client, bufnr)
   keymap("n", "<leader>ca", vim.lsp.buf.code_action, buf_opts)
   keymap("n", "gr", vim.lsp.buf.references, buf_opts)
   keymap("n", "<leader>f", vim.lsp.buf.formatting, buf_opts)
+end
+
+-- TODO: This is an old approach that is available in neovim 0.7, update according once vim 0.8 is available
+local function lsp_set_formatting(client)
+  if client.name ~= "null-ls" then
+    client.resolved_capabilities.document_formatting = false -- 0.7 and earlier
+    client.resolved_capabilities.documentFormattingProvider = false -- 0.8 and later
+  end
+end
+
+local function on_attach(client, bufnr)
+  lsp_set_keymaps(bufnr)
+  lsp_set_formatting(client)
 end
 
 return on_attach

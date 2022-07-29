@@ -1,3 +1,3 @@
 vim.cmd([[
-	autocmd BufWritePre * undojoin | Neoformat
+	autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
 ]])
