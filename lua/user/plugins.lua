@@ -1,44 +1,3 @@
-local fn = vim.fn
-
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({
-    "git",
-    "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
-  })
-  vim.cmd([[packadd packer.nvim]])
-end
-
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-    autocmd BufWritePost colorscheme_list.lua source <afile> | PackerSync
-    autocmd BufWritePost colorscheme.lua source <afile> | PackerSync
-  augroup end
-]])
-
-local requireOk, packer = pcall(require, "packer")
-if not requireOk then
-  vim.notify("Couldn't require packer")
-  return
-end
-
--- Packer should display itself as a floating window
-packer.init({
-  display = {
-    open_fn = function()
-      return require("packer.util").float()
-    end,
-  },
-})
-
 local plugins = {
   -- Packer can manage itself
   "wbthomason/packer.nvim",
@@ -115,6 +74,47 @@ local plugins = {
   -- Indent Blacklines, to show indent lines
   "lukas-reineke/indent-blankline.nvim",
 }
+
+local fn = vim.fn
+
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  })
+  vim.cmd([[packadd packer.nvim]])
+end
+
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost colorscheme_list.lua source <afile> | PackerSync
+    autocmd BufWritePost colorscheme.lua source <afile> | PackerSync
+  augroup end
+]])
+
+local requireOk, packer = pcall(require, "packer")
+if not requireOk then
+  vim.notify("Couldn't require packer")
+  return
+end
+
+-- Packer should display itself as a floating window
+packer.init({
+  display = {
+    open_fn = function()
+      return require("packer.util").float()
+    end,
+  },
+})
 
 packer.startup(function(default_use)
   local function use(plugin)
