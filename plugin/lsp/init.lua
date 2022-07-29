@@ -10,22 +10,20 @@ local lsp_flags = {
 }
 
 -- Setup Handlers
-local capabilities_ok, capabilities = pcall(require, "plugin.lsp.capabilities")
+local capabilities_ok, capabilities = pcall(require, "lsp.capabilities")
 if not capabilities_ok then
   vim.notify("Failed to load capabilities")
   return
 end --
 
 -- Setup Handlers
-local on_attach_ok, on_attach = pcall(require, "plugin.lsp.on_attach")
+local on_attach_ok, on_attach = pcall(require, "lsp.on_attach")
 if not on_attach_ok then
   vim.notify("Failed to load on_attach")
   return
 end --
 -- for some reason, pcall with require and mason fails
 local mason = require("mason")
-
-mason.setup()
 
 local mason_lsp_config_ok, mason_slp_config = pcall(require, "mason-lspconfig")
 if not mason_lsp_config_ok then
@@ -38,6 +36,8 @@ local has_language_servers, language_servers =
 if not has_language_servers then
   language_servers = {}
 end
+
+mason.setup()
 
 mason_slp_config.setup({
   ensure_installed = language_servers,

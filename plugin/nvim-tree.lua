@@ -18,6 +18,7 @@ nvim_tree.setup({
   hijack_netrw = true,
   sort_by = "case_sensitive",
   reload_on_bufenter = true,
+  auto_reload_on_write = true,
   open_on_setup_file = false,
   open_on_setup = false,
   hijack_cursor = true,
