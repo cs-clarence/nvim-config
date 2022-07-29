@@ -42,6 +42,8 @@ packer.init({
 local plugins = {
   -- Packer can manage itself
   "wbthomason/packer.nvim",
+
+  -- Some dependencies for other packages
   "nvim-lua/plenary.nvim",
 
   -- Fzf, a fancy fuzzy finder

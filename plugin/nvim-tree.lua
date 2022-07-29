@@ -55,6 +55,8 @@ nvimTree.setup({
     highlight_opened_files = "icon",
   },
   filters = {
-    dotfiles = true,
+    dotfiles = false,
+    custom = { "^.git$" },
+    exclude = {},
   },
 })
