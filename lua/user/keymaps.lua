@@ -49,7 +49,19 @@ keymap("n", [[<leader>ps]], [[<cmd>PackerSync<cr>]], default_opts)
 keymap("n", [[<leader>pu]], [[<cmd>PackerUpdate<cr>]], default_opts)
 
 -- Trouble
-keymap("n", [[<leader>dd]], [[<cmd>TroubleToggle<cr>]], default_opts)
+keymap(
+  "n",
+  [[<leader>dd]],
+  [[<cmd>TroubleToggle document_diagnostics<cr>]],
+  default_opts
+)
+keymap(
+  "n",
+  [[<leader>dw]],
+  [[<cmd>TroubleToggle workspace_diagnostics<cr>]],
+  default_opts
+)
+keymap("n", [[<leader>dt]], [[<cmd>TroubleToggle todo<cr>]], default_opts)
 
 -- Diagnostics
 keymap("n", [[<leader>d]], vim.diagnostic.open_float, default_opts)
@@ -58,7 +70,7 @@ keymap("n", [=[[d]=], vim.diagnostic.goto_prev, default_opts)
 keymap("n", [=[]d]=], vim.diagnostic.goto_next, default_opts)
 
 -- Gitsigns
-keymap("n", [[<leader>cb]], [[<cmd>Gitsigns blame_line<cr>]])
-keymap("n", [[<leader>cp]], [[<cmd>Gitsigns preview_hunk<cr>]])
-keymap("n", [=[[c]=], [[<cmd>Gitsigns prev_hunk<cr>]])
-keymap("n", [=[]c]=], [[<cmd>Gitsigns next_hunk<cr>]])
+keymap("n", [[<leader>cb]], [[<cmd>Gitsigns blame_line<cr>]], default_opts)
+keymap("n", [[<leader>cp]], [[<cmd>Gitsigns preview_hunk<cr>]], default_opts)
+keymap("n", [=[[c]=], [[<cmd>Gitsigns prev_hunk<cr>]], default_opts)
+keymap("n", [=[]c]=], [[<cmd>Gitsigns next_hunk<cr>]], default_opts)
