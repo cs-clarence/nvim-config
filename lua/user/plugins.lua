@@ -5,6 +5,9 @@ local plugins = {
   -- Some dependencies for other packages
   "nvim-lua/plenary.nvim",
 
+  -- Some fixes for vim to improve performance, qol and whatnot
+  "antoinemadec/FixCursorHold.nvim",
+
   -- Fzf, a fancy fuzzy finder
   "ibhagwan/fzf-lua",
 
@@ -71,6 +74,12 @@ local plugins = {
 
   -- Indent Blacklines, to show indent lines
   "lukas-reineke/indent-blankline.nvim",
+
+  -- Todo Comments, shows UI for TODOs
+  "folke/todo-comments.nvim",
+
+  -- Better Filetype detection
+  "nathom/filetype.nvim",
 }
 
 return plugins

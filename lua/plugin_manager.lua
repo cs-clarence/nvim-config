@@ -1,6 +1,6 @@
 local M = {}
 local initialized = false
-function M.init(options)
+function M.init()
   if initialized then
     error("init() should be only called once")
   end
@@ -27,7 +27,7 @@ function M.init(options)
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
-    autocmd BufWritePost colorscheme_list.lua source <afile> | PackerSync
+    autocmd BufWritePost colorschemes.lua source <afile> | PackerSync
     autocmd BufWritePost colorscheme.lua source <afile> | PackerSync
   augroup end
 ]])
@@ -63,15 +63,15 @@ function M.init(options)
 
     -- Colorschemes
     -- Install all the colorschemes specified by user
-    local csListOk, colorschemes = pcall(require, "user.colorscheme_list")
-    if csListOk then
-      for index, colorscheme in pairs(colorschemes) do
+    local cs_list_ok, colorschemes = pcall(require, "user.colorschemes")
+    if cs_list_ok then
+      for _, colorscheme in pairs(colorschemes) do
         use(colorscheme)
       end
     end
 
-    local csOk, colorscheme = pcall(require, "user.colorscheme")
-    if csOk then
+    local cs_ok, colorscheme = pcall(require, "user.colorscheme")
+    if cs_ok then
       local ok = pcall(vim.cmd, [[colorscheme ]] .. colorscheme)
 
       if not ok then
@@ -85,7 +85,7 @@ function M.init(options)
       return
     end
 
-    for k, v in ipairs(plugins) do
+    for _, v in ipairs(plugins) do
       use(v)
     end
 

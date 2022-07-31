@@ -12,14 +12,14 @@ vim.g.maplocalleader = " "
 keymap("t", [[<ESC>]], [[<C-\><C-n>]], default_opts)
 
 -- NvimToggleTree keymaps
-keymap("n", [[<leader>tt]], [[:NvimTreeToggle<cr>]], default_opts)
+keymap("n", [[<leader>tt]], [[<cmd>NvimTreeToggle<cr>]], default_opts)
 
 -- Fzf Toggle
-keymap("n", [[<leader>ff]], [[:Fzf files<cr>]], default_opts)
-keymap("n", [[<leader>ft]], [[:Fzf tags<cr>]], default_opts)
-keymap("n", [[<leader>fb]], [[:Fzf buffers<cr>]], default_opts)
-keymap("n", [[<leader>fg]], [[:Fzf grep<cr>]], default_opts)
-keymap("n", [[<leader>fr]], [[:Fzf git_files<cr>]], default_opts)
+keymap("n", [[<leader>ff]], [[<cmd>Fzf files<cr>]], default_opts)
+keymap("n", [[<leader>ft]], [[<cmd>Fzf tags<cr>]], default_opts)
+keymap("n", [[<leader>fb]], [[<cmd>Fzf buffers<cr>]], default_opts)
+keymap("n", [[<leader>fg]], [[<cmd>Fzf grep<cr>]], default_opts)
+keymap("n", [[<leader>fr]], [[<cmd>Fzf git_files<cr>]], default_opts)
 
 -- Better (?) window navigation
 keymap("n", [[<C-k>]], [[<C-w>k]], default_opts)
@@ -27,31 +27,38 @@ keymap("n", [[<C-j>]], [[<C-w>j]], default_opts)
 keymap("n", [[<C-l>]], [[<C-w>l]], default_opts)
 keymap("n", [[<C-h>]], [[<C-w>h]], default_opts)
 
--- Better (?) window resize
-keymap("n", [[<A-k>]], [[:resize -1<cr>]], default_opts)
-keymap("n", [[<A-j>]], [[:resize +1<cr>]], default_opts)
-keymap("n", [[<A-h>]], [[:vertical resize -1<cr>]], default_opts)
-keymap("n", [[<A-l>]], [[:vertical resize +1<cr>]], default_opts)
+-- Window resize
+keymap("n", [[<A-k>]], [[<cmd>resize -1<cr>]], default_opts)
+keymap("n", [[<A-j>]], [[<cmd>resize +1<cr>]], default_opts)
+keymap("n", [[<A-h>]], [[<cmd>vertical resize -1<cr>]], default_opts)
+keymap("n", [[<A-l>]], [[<cmd>vertical resize +1<cr>]], default_opts)
 
--- Buffer traversal
-keymap("n", [[<S-l>]], [[:bnext<cr>]], default_opts)
-keymap("n", [[<S-h>]], [[:bprevious<cr>]], default_opts)
+-- Buffer control
+keymap("n", [[<S-l>]], [[<cmd>bnext<cr>]], default_opts)
+keymap("n", [[<S-h>]], [[<cmd>bprevious<cr>]], default_opts)
+keymap("n", "<leader>bd", [[<cmd>bdelete<cr>]], default_opts)
 
 -- Toggle ToggleTerm
-keymap("n", [[<leader>tr]], [[:ToggleTerm<cr>]], default_opts)
+keymap("n", [[<leader>tr]], [[<cmd>ToggleTerm<cr>]], default_opts)
 
 -- Tagbar
-keymap("n", [[<leader>b]], [[:TagbarToggle<cr>]], default_opts)
+keymap("n", [[<leader>tb]], [[<cmd>TagbarToggle<cr>]], default_opts)
 
 -- Packer keymaps command
-keymap("n", [[<leader>ps]], [[:PackerSync<cr>]], default_opts)
-keymap("n", [[<leader>pu]], [[:PackerUpdate<cr>]], default_opts)
+keymap("n", [[<leader>ps]], [[<cmd>PackerSync<cr>]], default_opts)
+keymap("n", [[<leader>pu]], [[<cmd>PackerUpdate<cr>]], default_opts)
 
 -- Trouble
-keymap("n", [[<leader>dd]], [[:TroubleToggle<cr>]], default_opts)
+keymap("n", [[<leader>dd]], [[<cmd>TroubleToggle<cr>]], default_opts)
 
 -- Diagnostics
-keymap("n", "<leader>d", vim.diagnostic.open_float, default_opts)
-keymap("n", "<leader>df", vim.diagnostic.open_float, default_opts)
-keymap("n", "[d", vim.diagnostic.goto_prev, default_opts)
-keymap("n", "]d", vim.diagnostic.goto_next, default_opts)
+keymap("n", [[<leader>d]], vim.diagnostic.open_float, default_opts)
+keymap("n", [[<leader>df]], vim.diagnostic.open_float, default_opts)
+keymap("n", [=[[d]=], vim.diagnostic.goto_prev, default_opts)
+keymap("n", [=[]d]=], vim.diagnostic.goto_next, default_opts)
+
+-- Gitsigns
+keymap("n", [[<leader>cb]], [[<cmd>Gitsigns blame_line<cr>]])
+keymap("n", [[<leader>cp]], [[<cmd>Gitsigns preview_hunk<cr>]])
+keymap("n", [=[[c]=], [[<cmd>Gitsigns prev_hunk<cr>]])
+keymap("n", [=[]c]=], [[<cmd>Gitsigns next_hunk<cr>]])
