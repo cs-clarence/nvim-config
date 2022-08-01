@@ -27,7 +27,7 @@ local mason = require("mason")
 
 local mason_lsp_config_ok, mason_lsp_config = pcall(require, "mason-lspconfig")
 if not mason_lsp_config_ok then
-  vim.notify("Failed to load mason-lspconfg")
+  vim.notify("Failed to load mason-lspconfig")
   return
 end
 
@@ -63,6 +63,17 @@ mason_lsp_config.setup_handlers({
     if has_custom_opts then
       local_opts = vim.tbl_deep_extend("force", opts, custom_opts)
     end
+    lc[server_name].setup(local_opts)
+  end,
+  ["sumneko_lua"] = function(server_name)
+    local _, lua_dev = pcall(require, "lua-dev")
+    local _, sumneko_lua_opts =
+      pcall(require, "user.language_servers.options.sumneko_lua")
+
+    local local_opts =
+      vim.tbl_deep_extend("force", sumneko_lua_opts or {}, lua_dev or {})
+
+    local_opts = vim.tbl_deep_extend("force", local_opts, opts)
     lc[server_name].setup(local_opts)
   end,
 })

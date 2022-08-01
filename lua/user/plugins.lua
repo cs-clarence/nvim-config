@@ -78,11 +78,17 @@ local plugins = {
   -- Todo Comments, shows UI for TODOs
   "folke/todo-comments.nvim",
 
+  -- Luadev, vim and plugins autocomplete
+  "folke/lua-dev.nvim",
+
   -- WhichKey, shows suggestions for keys
   "folke/which-key.nvim",
 
   -- Neotest, a test runner
   "nvim-neotest/neotest",
+  "nvim-neotest/neotest-go",
+  "rouge8/neotest-rust",
+  "sidlatau/neotest-dart",
 
   -- Better Filetype detection
   "nathom/filetype.nvim",
