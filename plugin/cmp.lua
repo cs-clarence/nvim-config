@@ -60,8 +60,8 @@ local function createMenuName(sourceName)
   return menuName
 end
 
-local luasnipOk, luasnip = pcall(require, "luasnip")
-if not luasnipOk then
+local luasnip_ok, luasnip = pcall(require, "luasnip")
+if not luasnip_ok then
   vim.notify("Failed to require luansip")
   return
 end
@@ -137,7 +137,8 @@ cmp.setup({
     { name = "spell" },
     { name = "dictionary" },
     { name = "calc" },
-    { name = "nvim_lua" },
+    -- I replaced this plugin with lua-dev
+    -- { name = "nvim_lua" },
   }, {
     { name = "buffer" },
   }),

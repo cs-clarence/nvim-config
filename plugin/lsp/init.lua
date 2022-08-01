@@ -66,14 +66,26 @@ mason_lsp_config.setup_handlers({
     lc[server_name].setup(local_opts)
   end,
   ["sumneko_lua"] = function(server_name)
-    local _, lua_dev = pcall(require, "lua-dev")
-    local _, sumneko_lua_opts =
-      pcall(require, "user.language_servers.options.sumneko_lua")
+    local lua_dev_ok, lua_dev = pcall(require, "lua-dev")
 
-    local local_opts =
-      vim.tbl_deep_extend("force", sumneko_lua_opts or {}, lua_dev or {})
+    local local_opts = {}
 
-    local_opts = vim.tbl_deep_extend("force", local_opts, opts)
+    if lua_dev_ok then
+      local lua_dev_opts = lua_dev.setup({
+        library = {
+          vimruntime = true, -- runtime path
+          types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
+          plugins = true, -- installed opt or start plugins in packpath
+          -- you can also specify the list of plugins to make available as a workspace library
+          -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
+        },
+        runtime_path = false, -- enable this to get completion in require strings. Slow!
+        -- pass any additional options that will be merged in the final lsp config
+        lspconfig = opts,
+      })
+      local_opts = vim.tbl_deep_extend("force", local_opts, lua_dev_opts)
+    end
+
     lc[server_name].setup(local_opts)
   end,
 })

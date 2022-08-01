@@ -32,7 +32,7 @@ local plugins = {
   "hrsh7th/nvim-cmp",
   "f3fora/cmp-spell",
   "hrsh7th/cmp-calc",
-  "hrsh7th/cmp-nvim-lua",
+  -- "hrsh7th/cmp-nvim-lua",
   "uga-rosa/cmp-dictionary",
 
   -- Snippets
