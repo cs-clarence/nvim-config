@@ -22,10 +22,11 @@ keymap("n", [[<leader>fg]], [[<cmd>Fzf grep<cr>]], default_opts)
 keymap("n", [[<leader>fr]], [[<cmd>Fzf git_files<cr>]], default_opts)
 
 -- Better (?) window navigation
-keymap("n", [[<C-k>]], [[<C-w>k]], default_opts)
-keymap("n", [[<C-j>]], [[<C-w>j]], default_opts)
-keymap("n", [[<C-l>]], [[<C-w>l]], default_opts)
-keymap("n", [[<C-h>]], [[<C-w>h]], default_opts)
+-- I disabled it because i prefer window comamnds starting with C-W after all
+-- keymap("n", [[<C-k>]], [[<C-w>k]], default_opts)
+-- keymap("n", [[<C-j>]], [[<C-w>j]], default_opts)
+-- keymap("n", [[<C-l>]], [[<C-w>l]], default_opts)
+-- keymap("n", [[<C-h>]], [[<C-w>h]], default_opts)
 
 -- Window resize
 keymap("n", [[<A-k>]], [[<cmd>resize -1<cr>]], default_opts)
