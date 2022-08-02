@@ -20,6 +20,9 @@ nvim_treesitter_configs.setup({
   auto_pairs = {
     enable = true,
   },
+  autotag = {
+    enable = true,
+  },
   rainbow = {
     enable = true,
     -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for

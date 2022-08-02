@@ -60,6 +60,9 @@ local plugins = {
   { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
   "p00f/nvim-ts-rainbow",
 
+  -- Autotags
+  "windwp/nvim-ts-autotag",
+
   -- Autopairs
   "windwp/nvim-autopairs",
 
@@ -89,6 +92,11 @@ local plugins = {
   "nvim-neotest/neotest-go",
   "rouge8/neotest-rust",
   "sidlatau/neotest-dart",
+  "vim-test/vim-test",
+  "nvim-neotest/neotest-vim-test",
+
+  -- Nvim-Dap, support for debug adapters
+  "mfussenegger/nvim-dap",
 
   -- Better Filetype detection
   "nathom/filetype.nvim",

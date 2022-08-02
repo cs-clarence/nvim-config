@@ -75,3 +75,24 @@ keymap("n", [[<leader>cb]], [[<cmd>Gitsigns blame_line<cr>]], default_opts)
 keymap("n", [[<leader>cp]], [[<cmd>Gitsigns preview_hunk<cr>]], default_opts)
 keymap("n", [=[[c]=], [[<cmd>Gitsigns prev_hunk<cr>]], default_opts)
 keymap("n", [=[]c]=], [[<cmd>Gitsigns next_hunk<cr>]], default_opts)
+
+-- Neotest
+local neotest_ok, neotest = pcall(require, "neotest")
+if neotest_ok then
+  -- Test current function
+  keymap("n", [[<leader>rr]], function()
+    neotest.run.run()
+  end, default_opts)
+  -- Run all test in the current file
+  keymap("n", [[<leader>rf]], function()
+    neotest.run.run(vim.fn.expand("%"))
+  end, default_opts)
+  -- Run all tests in the current directory of the current file
+  keymap("n", [[<leader>rf]], function()
+    neotest.run.run(vim.fn.expand("%"))
+  end, default_opts)
+  -- Test the whole CWD
+  keymap("n", [[<leader>rc]], function()
+    neotest.run.run(vim.fn.getcwd())
+  end, default_opts)
+end
