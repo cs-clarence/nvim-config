@@ -26,7 +26,7 @@ o.clipboard:append("unnamedplus") -- allow neovim to access system clipboard
 o.signcolumn = "yes" -- always show signcolumn near the line number column
 o.numberwidth = 4 -- reserver for lines for the line number column
 o.showmode = false -- a status line plugin will do this for us so disable it for vim
-o.cmdheight = 2 -- add more space for command line to display more text
+o.cmdheight = 1 -- add more space for command line to display more text
 o.relativenumber = true
 o.number = true
 o.showtabline = 2 -- always show tabs, 2 means always
