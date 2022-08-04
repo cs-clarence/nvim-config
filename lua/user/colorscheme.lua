@@ -1,3 +1,3 @@
 -- Which colorscheme to set
-local colorscheme = "tokyonight"
+local colorscheme = "vscode"
 return colorscheme

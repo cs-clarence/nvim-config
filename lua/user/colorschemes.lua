@@ -9,4 +9,5 @@ return {
   "joshdick/onedark.vim",
   "arcticicestudio/nord-vim",
   "rakr/vim-one",
+  "Mofiqul/vscode.nvim",
 }
