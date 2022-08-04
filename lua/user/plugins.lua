@@ -98,6 +98,9 @@ local plugins = {
   -- Nvim-Dap, support for debug adapters
   "mfussenegger/nvim-dap",
 
+  -- Json SchemaStore
+  "b0o/SchemaStore.nvim",
+
   -- Better Filetype detection
   "nathom/filetype.nvim",
 }
