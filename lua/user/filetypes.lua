@@ -2,7 +2,9 @@
 local config = {
   overrides = {
     -- Set for file extensions
-    extensions = {},
+    extensions = {
+      gotmpl = "gotmpl",
+    },
     -- Set for specific filenames
     literal = {},
     -- Set the filetype of any full filename matching the regex
