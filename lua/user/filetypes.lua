@@ -13,9 +13,9 @@ local config = {
     function_extensions = {},
     function_literal = {},
     function_complex = {
-      [".+.go%w+"] = function()
+      [".+.go[%w-_]+$"] = function()
         local filename = vim.fn.expand("%")
-        local pattern = ".+.go(%w+)"
+        local pattern = ".+.go([%w-_]+)"
         local _, _, filetype = string.find(filename, pattern)
         vim.bo.filetype = filetype
       end,
