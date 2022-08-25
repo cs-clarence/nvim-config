@@ -11,9 +11,12 @@ local config = {
     function_extensions = {},
     function_literal = {},
     function_complex = {
-      -- [".+.go%w+"] = function()
-      --   vim.bo.filetype = "gotmpl"
-      -- end,
+      [".+.go%w+"] = function()
+        local filename = vim.fn.expand("%")
+        local pattern = ".+.go(%w+)"
+        local _, _, filetype = string.find(filename, pattern)
+        vim.bo.filetype = filetype
+      end,
     },
 
     -- Set for hashbang/shebang on type of the file
@@ -21,8 +24,8 @@ local config = {
   },
 }
 
-vim.cmd([[
-  autocmd BufNewFile,BufRead *.go* if search('{{.\+}}', 'nw') | setlocal filetype=gotmpl | endif
-]])
+-- vim.cmd([[
+--   autocmd BufNewFile,BufRead *.go* if search('{{.\+}}', 'nw') | setlocal filetype=gotmpl | endif
+-- ]])
 
 return config
