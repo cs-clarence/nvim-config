@@ -25,4 +25,5 @@ return {
   "vuels",
   "emmet_ls",
   "jsonls",
+  "zls",
 }

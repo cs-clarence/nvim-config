@@ -18,7 +18,7 @@ local config = {
         local filename = vim.fn.expand("%")
         local pattern = ".+.go([%w-_]+)"
         local _, _, filetype = string.find(filename, pattern)
-        vim.bo.filetype = filetype
+        vim.bo.filetype = "gotmpl"
       end,
     },
 
