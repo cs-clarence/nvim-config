@@ -5,6 +5,7 @@ local config = {
     extensions = {
       gotmpl = "gotmpl",
       tf = "terraform",
+      graphqls = "graphql",
     },
     -- Set for specific filenames
     literal = {},
