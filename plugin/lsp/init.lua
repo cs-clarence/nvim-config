@@ -88,4 +88,13 @@ mason_lsp_config.setup_handlers({
 
     lc[server_name].setup(local_opts)
   end,
+  ["sqls"] = function(server_name)
+    local sqls_ok, sqls = pcall(require, "sqls")
+
+    if not sqls_ok then
+      vim.notify("Failed to require sqls")
+    end
+
+    lc[server_name].setup({ on_attach = sqls.on_attach })
+  end,
 })

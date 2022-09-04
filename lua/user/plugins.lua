@@ -85,7 +85,7 @@ local plugins = {
   -- Luadev, vim and plugins autocomplete
   "folke/lua-dev.nvim",
 
-  -- WhichKey, shows suggestions for keys
+  -- WhichKey, shows suggestions for keystrokes
   "folke/which-key.nvim",
 
   -- Neotest, a test runner
@@ -104,6 +104,9 @@ local plugins = {
 
   -- Better Filetype detection
   "nathom/filetype.nvim",
+
+  -- SQLS support plugin
+  "nanotee/sqls.nvim",
 }
 
 return plugins
