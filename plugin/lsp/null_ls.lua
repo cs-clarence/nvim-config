@@ -5,9 +5,8 @@ end
 
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 local formatting = null_ls.builtins.formatting
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
--- local diagnostics = null_ls.builtins.diagnostics
---
+local diagnostics = null_ls.builtins.diagnostics
+
 null_ls.setup({
   debug = false,
   sources = {
@@ -22,6 +21,14 @@ null_ls.setup({
     formatting.cmake_format,
     formatting.rustfmt,
     formatting.stylua,
+    formatting.sql_formatter.with({ extra_args = { "-l", "postgresql" } }),
+    -- formatting.sqlfluff.with({
+    --   extra_args = { "--dialect", "postgres" }, -- change to your dialect
+    -- }),
+    --
+    -- diagnostics.sqlfluff.with({
+    --   extra_args = { "--dialect", "postgres" }, -- change to your dialect
+    -- }),
     -- diagnostics.flake8
   },
 })

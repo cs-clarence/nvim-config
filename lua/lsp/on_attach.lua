@@ -25,6 +25,7 @@ local function lsp_set_keymaps(bufnr)
 end
 
 -- TODO: This is an old approach that is available in neovim 0.7, update according once vim 0.8 is available
+-- LSPs to allow formatting capability
 local allowed_lsps = { svelte = true }
 local function lsp_set_formatting(client)
   if client.name ~= "null-ls" and not allowed_lsps[client.name] then

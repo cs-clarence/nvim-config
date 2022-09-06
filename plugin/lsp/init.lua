@@ -23,7 +23,12 @@ if not on_attach_ok then
   return
 end --
 -- for some reason, pcall with require and mason fails
-local mason = require("mason")
+local mason_ok, mason = pcall(require, "mason")
+
+if not mason_ok then
+  vim.notify("Failed to load mason")
+  return
+end
 
 local mason_lsp_config_ok, mason_lsp_config = pcall(require, "mason-lspconfig")
 if not mason_lsp_config_ok then
@@ -93,8 +98,18 @@ mason_lsp_config.setup_handlers({
 
     if not sqls_ok then
       vim.notify("Failed to require sqls")
+      return
     end
 
-    lc[server_name].setup({ on_attach = sqls.on_attach })
+    local custom_opts = {
+      on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+        sqls.on_attach(client, bufnr)
+      end,
+    }
+
+    local local_opts = vim.tbl_deep_extend("force", opts, custom_opts)
+
+    lc[server_name].setup(local_opts)
   end,
 })
