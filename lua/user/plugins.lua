@@ -1,4 +1,5 @@
-local plugins = {
+local M = {}
+M.list = {
   -- Packer can manage itself
   "wbthomason/packer.nvim",
 
@@ -107,6 +108,9 @@ local plugins = {
 
   -- SQLS support plugin
   "nanotee/sqls.nvim",
+
+  -- Support local neovim config files
+  "klen/nvim-config-local",
 }
 
-return plugins
+return M

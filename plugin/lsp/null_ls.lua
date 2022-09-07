@@ -3,32 +3,17 @@ if not null_ls_ok then
   return
 end
 
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-local formatting = null_ls.builtins.formatting
-local diagnostics = null_ls.builtins.diagnostics
+local sources_ok, sources = pcall(require, "user.null_ls_sources")
+if not sources_ok then
+  sources = {}
+end
 
-null_ls.setup({
-  debug = false,
-  sources = {
-    formatting.prettierd,
-    formatting.black.with({ extra_args = { "--fast" } }),
-    formatting.stylua,
-    formatting.dart_format,
-    formatting.gofumpt,
-    formatting.goimports,
-    formatting.golines,
-    formatting.clang_format,
-    formatting.cmake_format,
-    formatting.rustfmt,
-    formatting.stylua,
-    formatting.sql_formatter.with({ extra_args = { "-l", "postgresql" } }),
-    -- formatting.sqlfluff.with({
-    --   extra_args = { "--dialect", "postgres" }, -- change to your dialect
-    -- }),
-    --
-    -- diagnostics.sqlfluff.with({
-    --   extra_args = { "--dialect", "postgres" }, -- change to your dialect
-    -- }),
-    -- diagnostics.flake8
-  },
-})
+-- TODO: right now this function needs to be global to be callable inside autocmd, find a solution without needing to make it global
+function null_ls_setup()
+  null_ls.setup({
+    debug = false,
+    sources = sources.sources,
+  })
+end
+
+vim.cmd([[autocmd User ConfigFinished lua null_ls_setup()]])

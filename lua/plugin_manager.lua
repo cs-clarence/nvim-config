@@ -22,18 +22,16 @@ function M.init()
     vim.cmd([[packadd packer.nvim]])
   end
 
-  -- Autocommand that reloads neovim whenever you save the plugins.lua file
-  vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-    autocmd BufWritePost colorschemes.lua source <afile> | PackerSync
-    autocmd BufWritePost colorscheme.lua source <afile> | PackerSync
-  augroup end
-]])
+  -- Autocommand that reloads neovim whenever you save the plugins.lua file, doesn't work properly
+  -- vim.cmd([[
+  -- augroup packer_user_config
+  --   autocmd!
+  --   autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  -- augroup end
+  -- ]])
 
-  local requireOk, packer = pcall(require, "packer")
-  if not requireOk then
+  local packer_ok, packer = pcall(require, "packer")
+  if not packer_ok then
     vim.notify("Couldn't require packer")
     return
   end
@@ -63,19 +61,10 @@ function M.init()
 
     -- Colorschemes
     -- Install all the colorschemes specified by user
-    local cs_list_ok, colorschemes = pcall(require, "user.colorschemes")
-    if cs_list_ok then
-      for _, colorscheme in pairs(colorschemes) do
-        use(colorscheme)
-      end
-    end
-
     local cs_ok, colorscheme = pcall(require, "user.colorscheme")
     if cs_ok then
-      local ok = pcall(vim.cmd, [[colorscheme ]] .. colorscheme)
-
-      if not ok then
-        vim.notify("Unable to set colorscheme " .. colorscheme .. ": not found")
+      for _, cs in pairs(colorscheme.list) do
+        use(cs)
       end
     end
 
