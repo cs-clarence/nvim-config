@@ -1,4 +1,5 @@
 local null_ls_ok, null_ls = pcall(require, "null-ls")
+local database = require("user.database")
 if not null_ls_ok then
   return
 end
@@ -24,6 +25,9 @@ local default_sources = {
   formatting.clang_format,
 
   formatting.rustfmt,
+  formatting.sql_formatter.with({
+    extra_args = { "--language", database.config.driver },
+  }),
 }
 
 local M = {}

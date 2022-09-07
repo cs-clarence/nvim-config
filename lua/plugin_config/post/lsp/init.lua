@@ -100,13 +100,16 @@ mason_lsp_config.setup_handlers({
       vim.notify("Failed to require sqls")
       return
     end
+    local has_custom_opts, custom_opts =
+      pcall(require, "user.language_servers.options." .. server_name)
+    if not has_custom_opts then
+      custom_opts = {}
+    end
 
-    local custom_opts = {
-      on_attach = function(client, bufnr)
-        on_attach(client, bufnr)
-        sqls.on_attach(client, bufnr)
-      end,
-    }
+    custom_opts.on_attach = function(client, bufnr)
+      on_attach(client, bufnr)
+      sqls.on_attach(client, bufnr)
+    end
 
     local local_opts = vim.tbl_deep_extend("force", opts, custom_opts)
 

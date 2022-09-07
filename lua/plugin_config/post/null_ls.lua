@@ -9,11 +9,7 @@ if not sources_ok then
 end
 
 -- TODO: right now this function needs to be global to be callable inside autocmd, find a solution without needing to make it global
-function null_ls_setup()
-  null_ls.setup({
-    debug = false,
-    sources = sources.sources,
-  })
-end
-
-vim.cmd([[autocmd User ConfigFinished lua null_ls_setup()]])
+null_ls.setup({
+  debug = false,
+  sources = sources.sources,
+})

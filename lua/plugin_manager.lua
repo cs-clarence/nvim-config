@@ -66,6 +66,8 @@ function M.init()
       for _, cs in pairs(colorscheme.list) do
         use(cs)
       end
+
+      vim.cmd([[colorscheme ]] .. colorscheme.active)
     end
 
     local plugins_ok, plugins = pcall(require, "user.plugins")
@@ -74,8 +76,18 @@ function M.init()
       return
     end
 
-    for _, v in ipairs(plugins) do
+    for _, v in ipairs(plugins.list) do
       use(v)
+    end
+
+    local rocks_ok, rocks = pcall(require, "user.rocks")
+    if not rocks_ok then
+      vim.notify("Failed to require rocks")
+      return
+    end
+
+    for _, v in ipairs(rocks.list) do
+      use_rocks(v)
     end
 
     -- Automatically set up your configuration after cloning packer.nvim

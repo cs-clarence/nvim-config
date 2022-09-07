@@ -2,6 +2,7 @@ local M = {}
 
 -- Which colorscheme to set
 local default = "vscode"
+
 -- A list for colorschemes you want to install
 local default_colorschemes = {
   "morhetz/gruvbox",
@@ -28,8 +29,5 @@ function M.install(colorschemes)
     table.insert(M.list, v)
   end
 end
-
--- set colorscheme once user config is loaded
-vim.cmd([[autocmd User ConfigFinished :colorscheme ]] .. M.active)
 
 return M

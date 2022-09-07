@@ -108,9 +108,6 @@ M.list = {
 
   -- SQLS support plugin
   "nanotee/sqls.nvim",
-
-  -- Support local neovim config files
-  "klen/nvim-config-local",
 }
 
 return M
