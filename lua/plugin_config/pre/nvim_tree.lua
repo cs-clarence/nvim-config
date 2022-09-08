@@ -48,7 +48,7 @@ nvim_tree.setup({
   },
   git = {
     enable = true,
-    ignore = true,
+    ignore = false, -- show .gitinogore'd in the tree
     timeout = 500,
   },
   renderer = {
