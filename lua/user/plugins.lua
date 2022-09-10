@@ -108,6 +108,11 @@ M.list = {
 
   -- SQLS support plugin
   "nanotee/sqls.nvim",
+
+  -- Github Copilot
+  -- "github/copilot.vim",
+  "zbirenbaum/copilot.lua",
+  "zbirenbaum/copilot-cmp",
 }
 
 return M
