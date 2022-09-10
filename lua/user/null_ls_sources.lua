@@ -28,6 +28,7 @@ local default_sources = {
   formatting.sql_formatter.with({
     extra_args = { "--language", database.config.driver },
   }),
+  formatting.shfmt,
 }
 
 local M = {}
