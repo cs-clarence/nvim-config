@@ -15,12 +15,12 @@ local function load_pre_plugins()
   for _, entry in
     pairs(
       scan.scan_dir(
-        vim.fn.stdpath("config") .. "/lua/plugin_config/pre",
+        vim.fn.stdpath("config") .. "/lua/config/pre",
         { depth = 1, add_dir = true }
       )
     )
   do
-    require("plugin_config.pre." .. string.gsub(basename(entry), ".lua", ""))
+    require("config.pre." .. string.gsub(basename(entry), ".lua", ""))
   end
 end
 load_pre_plugins()
@@ -45,12 +45,12 @@ local function load_post_plugins()
   for _, entry in
     pairs(
       scan.scan_dir(
-        vim.fn.stdpath("config") .. "/lua/plugin_config/post",
+        vim.fn.stdpath("config") .. "/lua/config/post",
         { depth = 1, add_dirs = true }
       )
     )
   do
-    require("plugin_config.post." .. string.gsub(basename(entry), ".lua", ""))
+    require("config.post." .. string.gsub(basename(entry), ".lua", ""))
   end
 end
 load_post_plugins()
