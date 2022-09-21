@@ -6,6 +6,7 @@ local config = {
       gotmpl = "gotmpl",
       tf = "terraform",
       graphqls = "graphql",
+      postcss = "css",
     },
     -- Set for specific filenames
     literal = {},
